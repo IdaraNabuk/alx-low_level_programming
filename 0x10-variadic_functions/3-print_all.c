@@ -1,91 +1,49 @@
 #include "variadic_functions.h"
-#include <stdio.h>
 #include <stdarg.h>
+#include <stdio.h>
 
 /**
- * integer_print - print integers.
- * (* a blank line
- * @args: the list of parameters
- * Description: this function prints integers)?
- * (* section header: the header of this function is variadic_functions.h)*
- * Return:no return a void func.
- */
-
-void integer_print(va_list args)
-{
-	printf("%d", va_arg(args, int));
-}
-
-/**
- * char_print - print chars.
- */
-
-void char_print(va_list args)
-{
-	printf("%c", va_arg(args, int));
-}
-
-/**
- * string_print - print strings
- */
-
-void string_print(va_list args)
-{
-	char *s;
-
-	s = va_arg(args, char *);
-
-	if (s == NULL)
-		s = "(nil)";
-	printf("%s", s);
-}
-
-/**
- * float_print - print floats.
- */
-
-void float_print(va_list args)
-{
-	printf("%f", va_arg(args, double));
-}
-
-/**
- * print_all - print anything.
+ * print_all - function that prints anything
+ * @format: is a list of types of arguments passed to the function
  */
 
 void print_all(const char * const format, ...)
 {
-	va_list args;
-	int i, j;
-	char *separator;
+	va_list list;
+	int x = 0;
+	char *k;
+	char *sep = ", ";
 
-	args_t arguments[] = {
-		{"c", char_print},
-		{"i", integer_print},
-		{"f", float_print},
-		{"s", string_print},
-		{NULL, NULL}
-	};
-	va_start(args, format);
-	i = 0;
-	separator = "";
-
-	while (format != NULL && *(format + i) != '\0')
+	va_start(list, format);
+	while ((format != NULL) && *(format + x) != '\0')
 	{
-		j = 0;
-
-		while (j < 4)
+		switch (*(format + x))
 		{
-			if (*(format + i) == *(arguments[j]).format)
-			{
-				printf("%s", separator);
-				arguments[j].function(args);
-				separator = ", ";
-			}
-			j++;
+			case 's':  /* string */
+				k = va_arg(list, char *);
+				k = (k != NULL) ? k : "(nil)";
+				printf("%s", k);
+				break;
+			case 'i':  /* int */
+				printf("%i", va_arg(list, int));
+				break;
+			case 'c':  /* char */
+				/* need a cast here since va_arg only takes fully promoted types */
+				printf("%c", va_arg(list, int));
+				break;
+			case 'f':  /* float */
+				printf("%f", va_arg(list, double));
+				break;
+			default:   /* if it does not comply with any of the cases */
+				x++;
+				continue;
 		}
-		i++;
+		if (*(format + x + 1) != 0)
+		{
+			printf("%s", sep);
+		}
+		x++;
 	}
-	printf("\n");
-	va_end(args);
+	putchar(10);
+	va_end(list);
 }

@@ -1,20 +1,16 @@
 #include <stdio.h>
-
 /**
- * main - Entry point
+ * main - Entry Point
  * Return: Success (0)
  */
-
 int main(void)
 {
-	char letter = 'a';
 	int i;
 
-	for (i = 0; i < 26; i++)
+	for (i = 0; i < 10; i++)
 	{
-		putchar(letter + i);
+		printf("%d", i);
 	}
-
 	putchar('\n');
 	return (0);
 }

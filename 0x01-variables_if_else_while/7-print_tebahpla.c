@@ -7,12 +7,11 @@
 
 int main(void)
 {
-	char letter = 'a';
 	int i;
 
-	for (i = 0; i < 26; i++)
+	for (i = 25; i >= 0; i--)
 	{
-		putchar(letter + i);
+		putchar(i);
 	}
 
 	putchar('\n');

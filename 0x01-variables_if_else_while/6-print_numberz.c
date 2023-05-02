@@ -2,17 +2,16 @@
 
 /**
  * main - Entry point
- * Return: Success (0)
+ * Return: Success(0)
  */
 
 int main(void)
 {
-	char letter = 'a';
-	int i;
+	int i = 0;
 
-	for (i = 0; i < 26; i++)
+	while (i < 10)
 	{
-		putchar(letter + i);
+		putchar(i);
 	}
 
 	putchar('\n');

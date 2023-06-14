@@ -1,4 +1,8 @@
-#include <main.h>
+#include "main.h"
+#include <string.h>
+
+int is_palindrome(char *s);
+bool check_palindrome(char *start, char *end);
 
 /**
 * is_palindrome - prints a palindrone

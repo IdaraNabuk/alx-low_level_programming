@@ -13,23 +13,18 @@
 int main(int argc, char *argv[])
 {
 	int add = 0;
+	int i;
+	int j;
 
-	/* Check if no numbers are passed */
 	if (argc == 1)
 	{
 		printf("0\n");
 		return (0);
 	}
 
-	/* Iterate through the arguments and calculate the sum */
-	int i;
-
 	for (i = 1; i < argc; i++)
 	{
 		char *num = argv[i];
-
-		/* Check if the number contains non-digit characters */
-	int j;
 
 	for (j = 0; num[j] != '\0'; j++)
 	{

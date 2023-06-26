@@ -22,19 +22,23 @@ int main(int argc, char *argv[])
 	}
 
 	/* Iterate through the arguments and calculate the sum */
-	for (int i = 1; i < argc; i++)
+	int i;
+
+	for (i = 1; i < argc; i++)
 	{
 		char *num = argv[i];
 
 		/* Check if the number contains non-digit characters */
-		for (int j = 0; num[j] != '\0'; j++)
+	int j;
+
+	for (j = 0; num[j] != '\0'; j++)
+	{
+		if (!isdigit(num[j]))
 		{
-			if (!isdigit(num[j]))
-			{
-				printf("Error\n");
-				return (1);
-			}
+			printf("Error\n");
+			return (1);
 		}
+	}
 
 		/* Convert the number to an integer and add it */
 		add += atoi(num);

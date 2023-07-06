@@ -6,7 +6,7 @@
 #include <string.h>
 
 /**
- * struct list_s - Singly linked list.
+ * struct list_t - Singly linked list.
  * @str: Malloc'ed string.
  * @len: The length of the string.
  * @next: Points to next node.
@@ -14,12 +14,12 @@
  * Description: Singly linked list node structure
  */
 
-typedef struct list_s
+typedef struct list_t
 {
 	char *str;
 	unsigned int len;
-	struct list_s *next;
-} list_s;
+	struct list_t *next;
+} list_t;
 
 size_t print_list(const list_t *h);
 size_t list_len(const list_t *h);
